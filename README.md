@@ -5,6 +5,8 @@ Wellness Form
 The Wellness Form allows for easy entry of wellness data point on web and mobile. 
 The data is written to a database for analysis. 
 
+You can check out the demo [here](https://reverent-bhaskara-6bb082.netlify.com/)
+
 This uses the [JSON Form](http://github.com/joshfire/jsonform/) library 
 
 
