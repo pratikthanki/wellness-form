@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>duke</title>
+    <link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
+</head>
+
+<style>
+    .jsonform-hasrequired {
+        width: 50%;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <h1>Daily Wellness</h1>
+    <form></form>
+    <div id="res" class="alert"></div>
+    <script type="text/javascript" src="deps/jquery.min.js"></script>
+    <script type="text/javascript" src="deps/underscore.js"></script>
+    <script type="text/javascript" src="deps/opt/jsv.js"></script>
+    <script type="text/javascript" src="lib/jsonform.js"></script>
+    <script defer src="src/index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $("form").jsonForm({
+            schema: {
+                SLEEP: {
+                    type: "string",
+                    title: "SLEEP",
+                    enum: ["", "1 - Very good", "2", "3 - OK", "4", "5 - Very bad"],
+                    default: "",
+                    required: true
+                },
+                HRSSLEPT: {
+                    type: "string",
+                    title: "How many hours did you sleep?",
+                    enum: ["", "<4", "4-6", "6-8", "8-10", "10+"],
+                    default: "",
+                    required: true
+                },
+                FATIGUE: {
+                    type: "string",
+                    title: "FATIGUE",
+                    enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
+                    default: "",
+                    required: true
+                },
+                MUSCLESORENESS: {
+                    type: "string",
+                    title: "MUSCLE SORENESS",
+                    enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
+                    default: "",
+                    required: true
+                },
+                STRESS: {
+                    type: "string",
+                    title: "STRESS",
+                    enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
+                    default: "",
+                    required: true
+                },
+                EXERCISE: {
+                    type: "string",
+                    title: "Did you do any exercise?",
+                    enum: ["", "No", "Yes"],
+                    default: "",
+                    required: true
+                },
+                EXERCISEMINS: {
+                    type: "string",
+                    title: "How many minutes of exercise did you do?",
+                    enum: ["", "0-15", "15-30", "30-45", "45-60", "60+"],
+                    default: "",
+                    required: true
+                }
+            },
+            form: [{
+                title: "How did you sleep?",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "SLEEP"
+            }, {
+                qid: "q2",
+                title: "How many hours did you sleep?",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "HRSSLEPT"
+            }, {
+                qid: "q3",
+                title: "FATIGUE",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "FATIGUE"
+            }, {
+                qid: "q4",
+                title: "MUSCLE SORENESS",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "MUSCLESORENESS"
+            }, {
+                qid: "q5",
+                title: "STRESS",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "STRESS"
+            }, {
+                qid: "q6",
+                title: "Did you do any exercise?",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "EXERCISE"
+            }, {
+                qid: "q7",
+                title: "How many minutes of exercise did you do?",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "EXERCISEMINS"
+            }, {
+                type: "submit",
+                title: "OK - I'm happy to submit!"
+            }],
+            onSubmit: function(errors, values) {
+                if (errors) {
+                    $("#res").html("<p>Looks like something went wrong!</p>");
+                } else {
+                    $("#res").html(
+                        "<p>Thanks for completing today's form</p>" +
+                        "<p>Enjoy the rest of your day!</p>"
+                    );
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
