@@ -3,19 +3,36 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>duke</title>
+    <title>Wellness</title>
     <link rel="stylesheet" type="text/css" href="deps/opt/bootstrap.css" />
 </head>
 
 <style>
     .jsonform-hasrequired {
-        width: 50%;
-        margin: auto;
+        width: 45%;
+        margin: 2%;
+    }
+    
+    .form-group {
+        padding-bottom: 2%;
+    }
+    
+    h1,
+    p {
+        padding-left: 2%;
+        /* text-align: center; */
+    }
+    
+    body {
+        background-color: #121212f0;
+        color: #cccccc;
     }
 </style>
 
 <body>
     <h1>Daily Wellness</h1>
+    <p><span id="datetime"></span></p>
+
     <form></form>
     <div id="res" class="alert"></div>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
@@ -34,49 +51,49 @@
                     title: "SLEEP",
                     enum: ["", "1 - Very good", "2", "3 - OK", "4", "5 - Very bad"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 HRSSLEPT: {
                     type: "string",
                     title: "How many hours did you sleep?",
                     enum: ["", "<4", "4-6", "6-8", "8-10", "10+"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 FATIGUE: {
                     type: "string",
                     title: "FATIGUE",
                     enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 MUSCLESORENESS: {
                     type: "string",
                     title: "MUSCLE SORENESS",
                     enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 STRESS: {
                     type: "string",
                     title: "STRESS",
                     enum: ["", "1 - Very low", "2", "3 - OK", "4", "5 - Very high"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 EXERCISE: {
                     type: "string",
                     title: "Did you do any exercise?",
                     enum: ["", "No", "Yes"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 EXERCISEMINS: {
                     type: "string",
                     title: "How many minutes of exercise did you do?",
                     enum: ["", "0-15", "15-30", "30-45", "45-60", "60+"],
                     default: "",
-                    required: true
+                    required: false
                 },
                 MEALS: {
                     type: "string",
@@ -128,6 +145,12 @@
                 optionsType: "radiobuttons",
                 key: "EXERCISEMINS"
             }, {
+                qid: "q7",
+                title: "How many meals have you had?",
+                activeClass: "btn-success",
+                optionsType: "radiobuttons",
+                key: "MEALS"
+            }, {
                 type: "submit",
                 title: "OK - I'm happy to submit!"
             }],
@@ -142,6 +165,13 @@
                 }
             }
         });
+
+        var dt = new Date();
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        document.getElementById("datetime").innerHTML =
+            (("0" + dt.getDate()).slice(-2)) + " " + months[dt.getMonth()] + " " + (dt.getFullYear()) + " " +
+            (("0" + dt.getHours()).slice(-2)) + ":" + (("0" + dt.getMinutes()).slice(-2));
     </script>
 </body>
 
