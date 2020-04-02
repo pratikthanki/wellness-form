@@ -18,11 +18,14 @@
     <h1>Daily Wellness</h1>
     <form></form>
     <div id="res" class="alert"></div>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
+    <script src="js/app.js"></script>
     <script type="text/javascript" src="deps/jquery.min.js"></script>
     <script type="text/javascript" src="deps/underscore.js"></script>
     <script type="text/javascript" src="deps/opt/jsv.js"></script>
     <script type="text/javascript" src="lib/jsonform.js"></script>
     <script defer src="src/index.js" charset="utf-8"></script>
+
     <script type="text/javascript">
         $("form").jsonForm({
             schema: {
@@ -72,6 +75,13 @@
                     type: "string",
                     title: "How many minutes of exercise did you do?",
                     enum: ["", "0-15", "15-30", "30-45", "45-60", "60+"],
+                    default: "",
+                    required: true
+                },
+                MEALS: {
+                    type: "string",
+                    title: "How many meals (including snacks) have you had?",
+                    enum: ["", "1", "2", "3", "4", "5+"],
                     default: "",
                     required: true
                 }
